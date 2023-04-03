@@ -2,8 +2,8 @@
 title: 二月半blog
 demo_ver: 1.0.14
 remote_theme: Drassil/git-wiki-theme@master
-description: Git-Wiki demo and documentation
-show_downloads: true
+description: 学习的记录和分享
+show_downloads: false
 show_wiki_pages: true
 show_wiki_pages_limit: 10
 paginate: 5
@@ -19,7 +19,7 @@ use_prose_io: true
 service: github
 search_engine : "js"
 google_cse_token: 007197903287787072094:8rbvkeqo6qw
-wiki_folder : "wiki"
+wiki_folder : "二月半"
 permalink: /blog/posts/:year/:month/:day/:title:output_ext
 site_root: 
 
