@@ -1,100 +1,133 @@
-# Material Theme for Jekyll!
-## DEMO: [code.liquidthink.net](http://www.code.liquidthink.net)
-#### created with React, Redux, React-Router and transpiled with Webpack.
-![travis-ci](https://api.travis-ci.org/InsidiousMind/material-bliss-jekyll-theme.svg?branch=master)
+# Rain
 
-Made with React and served statically and dynamically
+Rain is a simple and clean Jekyll theme with focus on content. It's a fork of [Tale theme](https://github.com/chesterhow/tale) with additional customizations.
 
-### **in order to build:**
-#### for Production
+![](https://github.com/inelaah/rain/blob/master/images/screenshot.png)
+
+## Features
+- Compatible with GitHub Pages
+- Responsive design
+- Syntax highlighting
+- Markdown and HTML text formatting
+- Pagination of posts
+- Related articles section
+- Links to social media
+
+
+## Getting Started
+
+You will need to install Jekyll on your machine. Installation depends on your operating system and it is explained [here](https://jekyllrb.com/docs/installation/).
+
+Then create a new directory and clone this repository:
+
+```bash
+mkdir rain
+cd rain
+git clone https://github.com/inelaah/rain.git
 ```
-./build-prod.sh //for production build
+
+Install all dependencies:
+
+```bash
+bundle install
 ```
 
-#### for Development:
-run both build-dev and npm run jekyll in different terminals
+## Site Configuration
+
+There is a configuration file `_config.yml` in root directory. You should overwrite it to fit to your needs.
+
+An example of `_config.yml` looks like this:
+
+```bash
+# Site settings
+title:          Rain
+description:    "Rain is a simple and clean Jekyll theme with focus on content."
+url:            https://github.com/inelaah/rain
+
+# Author
+author:
+  name:         Inela Avdic Hukic
+  email:        inelaah@gmail.com
+  url:          https://inelaah.com
+
+# Build settings
+markdown:       kramdown
+
+# Assets
+sass:
+  sass_dir:     _sass
+  style:        compressed
+
+# Gems
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  # - jemoji #Uncomment this to allow emoji in your post
+
+# Permalinks
+permalink:      /:year-:month-:day/:title
+paginate:       5
+
+# Related posts settings
+related_posts_section:
+  max_count:        5
+  min_common_tags:  2
+
+# Links to social media
+social:
+  email: inelaah@gmail.com
+  github: https://github.com/inelaah
+  twitter: https://twitter.com
+  linkedin: https://ba.linkedin.com/in/inela-avdic-hukic-322354131
 ```
-npm run jekyll // in one terminal
-./build-dev.sh //in another
+
+## Favicons
+
+It is recommended to put your own favicons:
+
+- `apple-touch-icon.png` (180x180)
+- `favicon-32x32.png` (32x32)
+- `favicon-16x16.png` (16x16)
+- `mstile-150x150.png` (150x150)
+- `android-chrome-192x192.png` (192x192)
+- `android-chrome-512x512.png` (512x512)
+
+in `/assets` directory. They're easily created via [Favicon Generator](https://realfavicongenerator.net/).
+
+
+## Related Articles
+
+Related articles section is based on article tags. For every post that you want to have this section you should define tags.
+To include related articles in the bottom of the content you should define `related_posts_section` property in configuration file.
+It contains two fields: `max_count` and `min_common_tags`:
+- `max_count` represents the maximum number of related articles shown on a single article.
+- `min_common_tags` represents the minimum number of common tags for two articles to become related articles.
+
+## Links to social media
+
+To include links to social media in the top right corner of your page you need to define `social` property.
+It contains email, GitHub, Twitter and LinkedIn fields. You can leave out any of these if you don't want them to show up on your page.
+
+## Customizing Rain theme
+
+If you want to customize Rain theme you can fork this project and make some changes. If you just want to change the style then you can find Sass files in `_sass/rain` directory.
+
+## Adding your own posts
+
+You can see an example of post structure in `_posts` directory. After you clone this project you should clean the `_posts` directory and add your own posts.
+
+## Build and serve
+
 ```
-### Features:
-- Two Themes: Light and Dark
-- Fully Responsive for most devices
-- Dynamic Fuzzy Search
-- Push-out Menu to save space and create focus for users
-- Dynamic Project Page in a masonry layout built
-- The pros of dynamic webpages matched with the awesomeness of static Jekyll
-- Optimized (99/100 on testmysite by google) with Jekyll Assets and Webpack
-- included RESTful-like API (with [jekyll-react plugin](https://github.com/InsidiousMind/Jekyll-React))
-- Static or Dynamic Pages with just a frontmatter option
-- MORE TO COME
+bundle exec jekyll serve
+```
 
-### Screen Shots
+Head over to http://127.0.0.1:4000/ to see your page.
 
-Dark Theme
-![Dark Theme](http://i.imgur.com/GfFoLXS.png)
+## License
 
-Light Theme
-![Light Theme](http://i.imgur.com/cdIgtax.png)
+Rain is licensed under the MIT license. Check the [LICENSE](LICENSE.md) file for details.
 
-Dark Theme with Push out menu active
-![Dark Theme Push Out](http://i.imgur.com/xsjkszO.png)
+## Author
 
-Project Page
-![Project Page](http://i.imgur.com/VnLqCpi.png)
-
-Single Post
-![Post](http://i.imgur.com/AcZ8nNi.png)
-
-
-## Site Layout
-
-`./react-dev/pages`
-- These are static Jekyll components being rendered with react
-
-`./react-dev/helpers.js`
-- these are global helpers. Right now all that is included are the static routes of you're site. Put all your static routes there (in 'staticRoutes' array), you don't need the full route just the base after your url So for example, if my posts are static and are at
- `http://www.example.com/posts/this-is-a-post.html`
- you just need "/posts/"
- this makes the loading of some parts of the site seem almost 'instant', while preserving the SEO of your site since Google can crawl the static content
-
-`./react-dev/components/menu_items.js`
-
-- This is where your menu items are rendered. If you want a new item, add an object to the Hashlist with it's corresponding path (from your root url) Javascript object. IE if it is:
-
-`const menuItems = { Home: '/', About: '/about/', Projects: '/projects/' };`
-and you want another entry, "Coding", with a path '/coding/' from the root url the object should look something like this :
-`const menuItems = { Home: '/', About: '/about/', Projects: '/projects/', Coding: '/coding'};`
-
-
-`./react-dev/actions/index.js`
-- this is where the magic happens from the JSON our Jekyll plugins rendered ( Jekyll_pages_api and Jekyll-react)
-You're going to want to add your site url to the `ROOT_URL` variable
-EX:
-if your site is at `http://www.example.com` change
-`const ROOT_URL = 'http://test_domain.com:4000';`
-to
-`const ROOT_URL = 'http://example.com';`
-
-
-### Site Config Variables:
-any site configuration that you want to let React use, put under 'react' in your `_config.yml`. This will be grabbed by the siteInfo action creator and put through it's corresponding reducer
-
-### TODO:
- - [x] create a jekyll plugin to output all [YML config] site data into JSON, in such a way which is importable to react and can be used to manage state
- - [x] [possible TODO, maybe redundant. ?] Rendered JS to HTML and outputted into a folder for Jekyll to take it. This allows us to use React components on `_layouts`
- - [x] create a Dynamic Search Function with Auto Fill
- - [x] Finish implementing Toggle Theme Switch
- - [ ] add useful important information to single-post post meta
- - [ ] make footer look better on mobile
- - [ ] Implement 'sliding' on mobile-touchA
- - [ ] make expanded search bar more responsive on mobile
- - [ ] create category pages
- - [ ] add pagination
- - [ ] Make different post 'types' (IE Fullsize page)
- - [ ] make it easier to use with Jekyll
- - [ ] Save theme in sites cookies
-
-
-### Contribution
-Want to contribute? Found an issue? Jump right in! I welcome any help I can get, and will work with you to fix any issues.
+[Inela Avdic Hukic](https://github.com/inelaah)
