@@ -5,10 +5,10 @@ layout: blog_layout
 {% for post in site.posts %}
 <article class="preview">
     <header>
-        <h2 class="/中断/post-title">
+        <h2 class="post-title">
             <a href="{{ /中断/post.url }}">  {{ /中断/post.title }} </a>
         </h2>
-        <p class="/中断/post-time"> {{ /中断/post.time }}</p>
+        <p class="post-time"> {{ /中断/post.time }}</p>
     </header>
     <section class="post-section">
         <p>
